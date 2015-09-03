@@ -1,0 +1,15 @@
+dist
+public/*.bundle.js
+public/bundle.js
+node_modules
+*.log
+.DS_Store
+
+*.pxd
+
+
+TodoStore.js
+AppDispatcher.js
+TodoConstants.js
+*.react.js
+TodoActions.js
