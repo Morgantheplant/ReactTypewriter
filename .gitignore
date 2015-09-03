@@ -9,7 +9,6 @@ node_modules
 
 
 TodoStore.js
-AppDispatcher.js
 TodoConstants.js
 *.react.js
 TodoActions.js

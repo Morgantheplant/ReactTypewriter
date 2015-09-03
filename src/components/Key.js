@@ -1,5 +1,6 @@
 var React = require('react');
 var classNames = require('classnames');
+var TypewriterActions =  require('../actions/TypewriterActions');
 
 var Key = React.createClass({
    getInitialState: function(){
@@ -17,7 +18,7 @@ var Key = React.createClass({
    	    style.boxShadow = "1px 1px 1px white, 2px 2px 5px white, 3px 3px 3px #C2C2C2";
    	    // handle dynamic button pressed animations
    	    if(isPressed){
-   	        style.transform = "translate(5px,8px)"
+   	        style.transform = "translate(5px,8px) rotateX(20deg)"
    	    }
    	  }
       
@@ -26,7 +27,7 @@ var Key = React.createClass({
    	  	style.boxShadow = "0px 1px 1px white, 0px 2px 5px white, 0px 3px 3px #C2C2C2";
    	    //handle button down animation
    	    if(isPressed){
-   	        style.transform = "translate(0px,8px)"
+   	        style.transform = "translate(0px,8px) rotateX(25deg)"
    	    }
    	  }
       
@@ -35,7 +36,7 @@ var Key = React.createClass({
    	  	style.boxShadow = "-1px 1px 1px white, -2px 2px 5px white, -3px 3px 3px #C2C2C2";
    	    //handle button down animation
    	    if(isPressed){
-   	    	style.transform = "translate(-5px,8px)"
+   	    	style.transform = "translate(-5px,8px) rotateX(20deg)"
    	    }
    	  }
     
@@ -58,11 +59,12 @@ var Key = React.createClass({
       )
    },
    _onClickedKeyboard: function(){
+      TypewriterActions.keyPressed(this.props.keyName)
+
    	  this.setState({isPressed:true})
    	  setTimeout(function(){
         this.setState({isPressed:false})
    	  }.bind(this),300);
-      console.log('clicked')
    }
 });
 

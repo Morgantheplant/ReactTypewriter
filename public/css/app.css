@@ -1,6 +1,6 @@
 body{
-	text-align: center;
-	font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    text-align: center;
+    font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
     line-height: 1.4em;
     background: #eaeaea url('bg.png');
     color: #4d4d4d;
@@ -12,6 +12,10 @@ body{
     -ms-font-smoothing: antialiased;
     -o-font-smoothing: antialiased;
     font-smoothing: antialiased;
+}
+
+.wrapper{
+    position: relative;
 }
 
 #info {
@@ -26,25 +30,59 @@ body{
   position:relative;
 }
 
+.typewriter-paper-container {
+    height:200px;
+    width: 196px;
+    border: 1px dashed red;
+    margin: 2px auto;
+    position:relative;
+}
+
+.typewriter-paper {
+    background-color: white;
+    box-shadow: 2px 2px 6px black;
+    height: 17px;
+    position: absolute;
+    width: 155px;
+    left: 77px;
+    top: 186px;
+    font-family: monospace;
+    font-size: 8px;
+    text-align: left;
+    padding: 10px 19px 10px 19px;
+}
+
+.typewriter-carriage {
+    position: absolute;
+    top: 170px;
+    left: -77px;
+    z-index: -1;
+}
+
 .keyboard-container {
-   position: absolute;
-   height: 200px;
-   width: 365px;
-   top: 54px;
-   left: 91px;
-   transform: rotateX(48deg);
+    position: absolute;
+    height: 203px;
+    width: 326px;
+    top: 42px;
+    left: 111px;
+    transform: rotateX(58deg);
+}
+
+img.base {
+    height:70%;
+    width:70%;
 }
 
 .keyboard-container p {
-    margin-top: 15px;
-    margin-right: 15px;
+    margin-top: 5px;
+    margin-right: 5px;
 }
 
 .keyboard-key {
-    height: 28px;
+    height: 20px;
     width: 18px;
-    line-height: 25px;
-    margin-right: 7px;
+    line-height: 20px;
+    margin-right: 5px;
     background: #EDEAEA;
     display: inline-block;
     border-radius: 3px;
@@ -62,10 +100,18 @@ body{
     width: 50px;
 }
 
-.typewriter-keys-spacebar {
+.keyboard-spacebar {
     position: absolute;
-    bottom: 28px;
-    left: 150px;
+    bottom: 25px;
+    width: 38%;
+    left: 171px;
+    cursor: pointer;
+    transition: trasform 0.2s, bottom 0.2s ease-out;
+}
+
+.keyboard-spacebar-pressed {
+    bottom: 20px;
+    transform: rotateX(5deg);
 }
 
 body {
