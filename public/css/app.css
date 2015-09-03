@@ -6,6 +6,7 @@ body{
     color: #4d4d4d;
     width: 550px;
     margin: 0 auto;
+    perspective: 350px;
     -webkit-font-smoothing: antialiased;
     -moz-font-smoothing: antialiased;
     -ms-font-smoothing: antialiased;
@@ -26,34 +27,45 @@ body{
 }
 
 .keyboard-container {
-    position: absolute;
-    height: 200px;
-    width: 365px;
-    /* background: rgba(128, 128, 128, 0.46); */
-    top: 59px;
-    left: 93px;
-    transform: rotateX(53deg);
-    /* box-shadow: 2px 2px 2px white; */
+   position: absolute;
+   height: 200px;
+   width: 365px;
+   top: 54px;
+   left: 91px;
+   transform: rotateX(48deg);
 }
 
 .keyboard-container p {
-     margin: 18px;
+    margin-top: 15px;
+    margin-right: 15px;
 }
 
 .keyboard-key {
-    height: 23px;
-    width: 20px;
+    height: 28px;
+    width: 18px;
+    line-height: 25px;
     margin-right: 7px;
     background: #EDEAEA;
     display: inline-block;
     border-radius: 3px;
-    box-shadow: -2px 2px -9px white;
+    /* box-shadow: -2px 2px -9px white; */
+    transition: translate .3s, background-color 0.1s;
+    cursor:pointer;
+}
+
+.keyboard-key-pressed {
+  background-color: #ADADAD;
+  /*transform: translate(5px, 5px);*/
+}
+
+.keyboard-key-shift {
+    width: 50px;
 }
 
 .typewriter-keys-spacebar {
     position: absolute;
-    bottom: 20px;
-    left: 50px;
+    bottom: 28px;
+    left: 150px;
 }
 
 body {
