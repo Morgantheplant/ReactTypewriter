@@ -2,7 +2,7 @@ body{
     text-align: center;
     font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
     line-height: 1.4em;
-    background: #eaeaea url('bg.png');
+    background: #eaeaea;
     color: #4d4d4d;
     width: 550px;
     margin: 0 auto;
@@ -40,23 +40,25 @@ body{
 
 .typewriter-paper {
     background-color: white;
-    box-shadow: 2px 2px 6px black;
-    height: 17px;
+    box-shadow: 0px -1px 2px black;
+    /* height: 17px; */
     position: absolute;
     width: 155px;
-    left: 77px;
-    top: 186px;
     font-family: monospace;
     font-size: 8px;
     text-align: left;
     padding: 10px 19px 10px 19px;
+    line-height: 12px;
+    transition: top 0.3s, left 0.3s, height 0.3s;
+    background-image: linear-gradient( white,white,white,white, gray, black );
 }
 
 .typewriter-carriage {
     position: absolute;
-    top: 170px;
-    left: -77px;
+ /*   top: 170px;
+    left: -77px;*/
     z-index: -1;
+    transition: top 0.3s, left 0.3s;
 }
 
 .keyboard-container {
@@ -112,19 +114,4 @@ img.base {
 .keyboard-spacebar-pressed {
     bottom: 20px;
     transform: rotateX(5deg);
-}
-
-body {
-    text-align: center;
-    font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    line-height: 1.4em;
-    background: #eaeaea url('bg.png');
-    color: #4d4d4d;
-    width: 550px;
-    margin: 0 auto;
-    -webkit-font-smoothing: antialiased;
-    -moz-font-smoothing: antialiased;
-    -ms-font-smoothing: antialiased;
-    -o-font-smoothing: antialiased;
-    font-smoothing: antialiased;
 }

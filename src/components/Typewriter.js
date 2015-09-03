@@ -7,7 +7,8 @@ var TypewriterStore = require('../stores/TypewriterStore');
 
 function getTypewriterState() {
     return {
-        paperText:  TypewriterStore.getText()
+        paperText:  TypewriterStore.getText(),
+        layoutCarriage: TypewriterStore.getCarriageLayout(),
     };
 }
 
@@ -26,7 +27,7 @@ var Typewriter = React.createClass({
     render: function(){
       return (
         <div className="wrapper">
-	        <Paper text={ this.state.paperText } />
+	        <Paper layout={ this.state.layoutCarriage } text={ this.state.paperText } />
 	        <div className="typewriter">
 	            <img className="base" src="./images/base.png" alt="typewriter base" />
 	            <Keyboard />

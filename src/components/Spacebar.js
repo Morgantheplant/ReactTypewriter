@@ -17,7 +17,7 @@ var SpaceBar = React.createClass({
         )
     },
     _onClickedSpace: function(){
-      TypewriterActions.keyPressed(" ")
+      TypewriterActions.keyPressed("\u00A0")
    	  this.setState({isPressed:true})
    	  setTimeout(function(){
         this.setState({isPressed:false})
