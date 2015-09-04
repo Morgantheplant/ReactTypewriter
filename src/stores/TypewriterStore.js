@@ -6,31 +6,26 @@ var assign = require('object-assign');
 var CHANGE_EVENT = 'change';
 
 //will hold the lines of text
-var _text = [ [], [], [] ];
-
-var _init = {
+var _text = [ ],
+ _init = {
   carriageTop:170, 
   carriageLeft:-77,
   paperTop:186,
   paperLeft: 82,
   paperHeight: 17
-};
-
-var _carriagePositions = {
+},
+_carriagePositions = {
   carriageTop:_init.carriageTop, 
   carriageLeft:_init.carriageLeft,
   paperTop:_init.paperTop,
   paperLeft:_init.paperLeft,
   paperHeight: _init.paperHeight
-};
-
-var _currentPaperLine = 0;
-var _columnCount = 0;
-var _rowCount = 0;
-console.log(_columnCount, 'here');
+},
+_currentPaperLine = 0,
+_columnCount = 0,
+_rowCount = 0;
 
 function addLetter(text) {
-  console.log(_columnCount)
   if(_columnCount < 35 ){
     simulateTyping(text);
   } else {
@@ -41,8 +36,11 @@ function addLetter(text) {
 
 function simulateTyping(text){
   //create array for line if it doesnt exist
-  var line = (_text[_currentPaperLine]) ? _text[_currentPaperLine] : [];
+  _text[_currentPaperLine] = (_text[_currentPaperLine]===undefined)? [] :_text[_currentPaperLine];
+  var line = _text[_currentPaperLine]
+
   line.push(text.toUpperCase());
+  console.log(line, _text[_currentPaperLine])
   _carriagePositions.paperLeft -= 4.7;
   _carriagePositions.carriageLeft -= 4.7;
   _columnCount++;

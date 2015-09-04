@@ -8,6 +8,11 @@ var Key = React.createClass({
        isPressed: false
    	 }
    },
+   componentDidMount: function(){
+     // window.addEventListener("keydown", function(e){
+     //  console.log(e)
+     // })
+   },
    createBorder: function(){
    	  var index = this.props.num,
    	  isPressed = this.state.isPressed,
