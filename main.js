@@ -1,5 +1,9 @@
 var React = require('react');
-var Typewriter = require('./src/components/Typewriter');
+var Router = require('react-router');
+var routes = require('./src/config/routes');
 
-React.render(<Typewriter />, document.querySelector('#content'))
+Router.run(routes, function(Handler){
+  React.render(<Handler />, document.querySelector('#content'))
+})
+
 

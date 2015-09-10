@@ -22,6 +22,7 @@ var Typewriter = React.createClass({
     },
     componentWillUnmount: function() {
         TypewriterStore.removeChangeListener(this._onChange);
+        window.removeEventListener('keydown')
     },
     render: function(){
       return (
@@ -45,17 +46,24 @@ var Typewriter = React.createClass({
             var code = (e.key) ? e.key : e.keyCode || e.which;
              //check if key code is a letter
             if(code >= 65 && code < 90){
-               var letter = String.fromCharCode(code)
-               this.refs.keyboard._triggerKeyClick(letter)
+                //make sure ref and method exist
+                if(this.refs.keyboard && this.refs.keyboard._triggerKeyClick){
+                    var letter = String.fromCharCode(code)
+                    this.refs.keyboard._triggerKeyClick(letter)
+                }
             }
             //check if keycode is a number
             if( code >= 48 && code < 58){
-                var number = String.fromCharCode(code)
-                this.refs.keyboard._triggerKeyClick(number)
+                if(this.refs.keyboard && this.refs.keyboard._triggerKeyClick){
+                    var number = String.fromCharCode(code)
+                    this.refs.keyboard._triggerKeyClick(number)
+                }
             }
             //check if key is spacebar
             if( code === 32){
-                this.refs.spacebar._onClickedSpace()
+                if(this.refs.keyboard && this.refs.keyboard._triggerKeyClick){
+                    this.refs.spacebar._onClickedSpace()
+                }
             }
         }.bind(this))
     }

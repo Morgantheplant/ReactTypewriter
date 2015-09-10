@@ -21,6 +21,7 @@
     "object-assign": "^4.0.1",
     "react": "~0.13.3",
     "react-addons": "^0.9.1-deprecated",
+    "react-router": "^0.13.3",
     "reactify": "^1.1.1",
     "uglify": "~0.1.5",
     "watchify": "^3.2.3"
