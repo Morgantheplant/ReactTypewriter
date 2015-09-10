@@ -46,8 +46,6 @@ var Key = React.createClass({
        	return this.props.keyName.toUpperCase();
     },
     render: function(){
-      
-
         return (
             <div className={classNames({
                 'keyboard-key': true,
@@ -57,7 +55,10 @@ var Key = React.createClass({
             </div>
       );
     },
-    _onClickedKeyboard: function(){
+    _onClickedKeyboard: function(e){
+        if(e){
+           e.stopPropagation();
+        }
         TypewriterActions.keyPressed(this.props.keyName);
 
    	    this.setState({isPressed:true});

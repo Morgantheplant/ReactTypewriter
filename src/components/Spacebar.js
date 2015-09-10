@@ -16,7 +16,9 @@ var SpaceBar = React.createClass({
             })} src="./images/spacebar.png" alt="SpaceBar spacebar" onClick={ this._onClickedSpace } />
         );
     },
-    _onClickedSpace: function(){
+    _onClickedSpace: function(e){
+        if(e) e.stopPropigation;
+
         TypewriterActions.keyPressed("\u00A0");
    	    this.setState({isPressed:true});
    	    setTimeout(function(){

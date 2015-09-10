@@ -21,7 +21,6 @@ var Keyboard = React.createClass({
    },
    _triggerKeyClick: function(raw){
         var value = raw.toLowerCase();
-        console.log(value)
         if(this.refs[value]&& this.refs[value]._onClickedKeyboard){
             this.refs[value]._onClickedKeyboard()
         }

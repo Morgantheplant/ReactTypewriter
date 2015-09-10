@@ -1,5 +1,6 @@
 var keyMirror = require('keymirror');
 
 module.exports = keyMirror({
-  KEY_PRESS: null
+  KEY_PRESS: null,
+  RESET_ALL: null
 });

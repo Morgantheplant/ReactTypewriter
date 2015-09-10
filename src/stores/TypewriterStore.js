@@ -5,31 +5,43 @@ var assign = require('object-assign');
 
 var CHANGE_EVENT = 'change';
 
+if(window.sessionStorage){
+  var init = window.sessionStorage.getItem("typewriterState"),
+  prevState = JSON.parse(init);
+  prevState = prevState || {};
+}
+
 //will hold the lines of text
-var _text = [ ],
-_init = {
-    carriageTop:170, 
-    carriageLeft:-77,
-    paperTop:186,
-    paperLeft: 82,
-    paperHeight: 17
+var _text = prevState.text || [],
+
+ _init = {
+  carriageTop:170, 
+  carriageLeft:-77,
+  paperTop:186,
+  paperLeft: 82,
+  paperHeight: 17
 },
-_carriagePositions = {
-    carriageTop:_init.carriageTop, 
-    carriageLeft:_init.carriageLeft,
-    paperTop:_init.paperTop,
-    paperLeft:_init.paperLeft,
-    paperHeight: _init.paperHeight
+
+_currentPositions = prevState.savedPositions || {
+  carriageTop:_init.carriageTop, 
+  carriageLeft:_init.carriageLeft,
+  paperTop:_init.paperTop,
+  paperLeft:_init.paperLeft,
+  paperHeight: _init.paperHeight
 },
-_currentPaperLine = 0,
-_columnCount = 0,
-_rowCount = 0;
+
+_currentLetter,
+_currentPaperLine = prevState.currentPaperLine || 0,
+_columnCount = prevState.columnCount || 0,
+_rowCount = prevState.rowCount || 0;
 
 function addLetter(text) {
     if(_columnCount < 35 ){
         simulateTyping(text);
+        updateSessionStorage();
     } else {
         resetCarriage();
+        simulateTyping(text);
     }
 }
 
@@ -39,8 +51,8 @@ function simulateTyping(text){
     var line = _text[_currentPaperLine];
 
     line.push(text.toUpperCase());
-    _carriagePositions.paperLeft -= 4.7;
-    _carriagePositions.carriageLeft -= 4.7;
+    _currentPositions.paperLeft -= 4.7;
+    _currentPositions.carriageLeft -= 4.7;
     _columnCount++;
 }
 
@@ -49,11 +61,38 @@ function resetCarriage(){
         _currentPaperLine++;
         _columnCount = 0;
         _rowCount++;
-        _carriagePositions.paperTop -= 10;
-        _carriagePositions.carriageLeft = _init.carriageLeft;
-        _carriagePositions.paperLeft = _init.paperLeft;
-        _carriagePositions.paperHeight += 10;
+        _currentPositions.paperTop -= 10;
+        _currentPositions.carriageLeft = _init.carriageLeft;
+        _currentPositions.paperLeft = _init.paperLeft;
+        _currentPositions.paperHeight += 10;
     } 
+}
+
+function updateSessionStorage(){
+  var storage = {
+    text: _text,
+    savedPositions: _currentPositions,
+    currentPaperLine: _currentPaperLine,
+    columnCount: _columnCount,
+    rowCount: _rowCount
+  }
+  window.sessionStorage.setItem("typewriterState", JSON.stringify(storage))
+}
+
+function resetPage(){
+  _text = [],
+  _currentPositions = {
+    carriageTop:170, 
+    carriageLeft:-77,
+    paperTop:186,
+    paperLeft: 82,
+    paperHeight: 17
+  };
+  _currentPaperLine = 0;
+  _columnCount = 0;
+  _rowCount = 0;
+  prevState = {};
+  window.sessionStorage.setItem("typewriterState", null)
 }
 
 var TypewriterStore = assign({}, EventEmitter.prototype, {
@@ -63,7 +102,7 @@ var TypewriterStore = assign({}, EventEmitter.prototype, {
     },
 
     getCarriageLayout: function(){
-        return _carriagePositions;
+        return _currentPositions;
     },
 
     emitChange: function() {
@@ -95,7 +134,11 @@ AppDispatcher.register(function(action) {
             addLetter(text);
             TypewriterStore.emitChange();
             break;
-        default:
+    case TypewriterConstants.RESET_ALL:
+           resetPage()
+           TypewriterStore.emitChange();
+          break;
+    default:
       // no op
     }
 });

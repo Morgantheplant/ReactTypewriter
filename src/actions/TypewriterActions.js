@@ -3,12 +3,18 @@ var TypewriterConstants = require('../constants/TypewriterConstants');
 
 var TypewriterActions = {
 
-  keyPressed: function(value) {
-    AppDispatcher.dispatch({
-      actionType: TypewriterConstants.KEY_PRESS,
-      text: value
-    });
-  }
+    keyPressed: function(value) {
+        AppDispatcher.dispatch({
+            actionType: TypewriterConstants.KEY_PRESS,
+            text: value
+        });
+    },
+
+    resetAll: function(){
+  	    AppDispatcher.dispatch({
+  		    actionType: TypewriterConstants.RESET_ALL
+  	    })
+    }
 
 };
 
