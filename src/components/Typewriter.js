@@ -4,14 +4,12 @@ var Spacebar = require('./Spacebar');
 var Paper = require('./Paper');
 var TypewriterStore = require('../stores/TypewriterStore');
 
-
 function getTypewriterState() {
     return {
         paperText:  TypewriterStore.getText(),
         layoutCarriage: TypewriterStore.getCarriageLayout(),
     };
 }
-
 
 var Typewriter = React.createClass({
     getInitialState: function(){
@@ -20,7 +18,6 @@ var Typewriter = React.createClass({
     componentDidMount: function() {
         TypewriterStore.addChangeListener(this._onChange);
     },
-
     componentWillUnmount: function() {
         TypewriterStore.removeChangeListener(this._onChange);
     },
@@ -34,10 +31,10 @@ var Typewriter = React.createClass({
 	            <Spacebar />
 	        </div>
         </div>
-      )
+      );
    },
    _onChange: function(){
-   	  this.setState(getTypewriterState())
+   	    this.setState(getTypewriterState())
    }
 });
 

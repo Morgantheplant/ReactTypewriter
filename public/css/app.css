@@ -33,7 +33,6 @@ body{
 .typewriter-paper-container {
     height:200px;
     width: 196px;
-    border: 1px dashed red;
     margin: 2px auto;
     position:relative;
 }
@@ -41,7 +40,6 @@ body{
 .typewriter-paper {
     background-color: white;
     box-shadow: 0px -1px 2px black;
-    /* height: 17px; */
     position: absolute;
     width: 155px;
     font-family: monospace;
@@ -55,8 +53,6 @@ body{
 
 .typewriter-carriage {
     position: absolute;
- /*   top: 170px;
-    left: -77px;*/
     z-index: -1;
     transition: top 0.3s, left 0.3s;
 }
@@ -88,14 +84,12 @@ img.base {
     background: #EDEAEA;
     display: inline-block;
     border-radius: 3px;
-    /* box-shadow: -2px 2px -9px white; */
     transition: translate .3s, background-color 0.1s;
     cursor:pointer;
 }
 
 .keyboard-key-pressed {
   background-color: #ADADAD;
-  /*transform: translate(5px, 5px);*/
 }
 
 .keyboard-key-shift {

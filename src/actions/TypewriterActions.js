@@ -1,5 +1,5 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
-var TypewriterConstants = require('../constants/TodoConstants');
+var TypewriterConstants = require('../constants/TypewriterConstants');
 
 var TypewriterActions = {
 

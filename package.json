@@ -1,6 +1,6 @@
 {
-  "name": "react-flux-todoMVC-starter",
-  "description": "react-flux and todoMVC-starter project",
+  "name": "react-typewriter",
+  "description": "react-flux typewriter",
   "repository": "https://github.com/Morgantheplant/react-starter-flux-todoMVC.git",
   "browserify": {
     "transform": [
